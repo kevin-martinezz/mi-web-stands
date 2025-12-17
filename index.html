@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ExpoStands | Renta de Stands</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ESTILOS (NO SE TOCAN) -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header>
+    <h1>ExpoStands</h1>
+    <nav>
+        <a href="#stands">Stands</a>
+        <a href="#reservar">Reservar</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Renta de Stands para Exposiciones</h2>
+    <p>Haz clic en cualquier imagen para reservar</p>
+</section>
+
+<section id="stands">
+    <h2>Nuestros Stands</h2>
+
+    <div class="cards">
+        <div class="card" onclick="reservarStand('Stand Básico')">
+            <img src="images/stand-basico.jpg">
+            <h3>Stand Básico</h3>
+            <p>3x3 m · Desde $5,000</p>
+        </div>
+
+        <div class="card" onclick="reservarStand('Stand Premium')">
+            <img src="images/stand-premium.jpg">
+            <h3>Stand Premium</h3>
+            <p>6x3 m · Desde $10,000</p>
+        </div>
+
+        <div class="card" onclick="reservarStand('Stand VIP')">
+            <img src="images/stand-vip.jpg">
+            <h3>Stand VIP</h3>
+            <p>6x6 m · Desde $18,000</p>
+        </div>
+    </div>
+</section>
+
+<section class="gallery">
+    <h2>Galería Stand Básico</h2>
+    <div class="gallery-grid">
+        <img src="images/basico1.jpg" onclick="reservarStand('Stand Básico')">
+        <img src="images/basico2.jpg" onclick="reservarStand('Stand Básico')">
+        <img src="images/basico3.jpg" onclick="reservarStand('Stand Básico')">
+    </div>
+</section>
+
+<section class="gallery">
+    <h2>Galería Stand Premium</h2>
+    <div class="gallery-grid">
+        <img src="images/premium1.jpg" onclick="reservarStand('Stand Premium')">
+        <img src="images/premium2.jpg" onclick="reservarStand('Stand Premium')">
+        <img src="images/premium3.jpg" onclick="reservarStand('Stand Premium')">
+    </div>
+</section>
+
+<section class="gallery">
+    <h2>Galería Stand VIP</h2>
+    <div class="gallery-grid">
+        <img src="images/vip1.jpg" onclick="reservarStand('Stand VIP')">
+        <img src="images/vip2.jpg" onclick="reservarStand('Stand VIP')">
+        <img src="images/vip3.jpg" onclick="reservarStand('Stand VIP')">
+    </div>
+</section>
+
+<section id="reservar">
+    <h2>Reserva tu Stand</h2>
+
+    <!-- FORMULARIO FORMSUBMIT -->
+    <form id="formReserva"
+          action="https://formsubmit.co/ke9080231@gmail.com"
+          method="POST">
+
+        <input type="text" name="Nombre" placeholder="Nombre completo" required>
+
+        <input type="email" name="Correo" placeholder="Correo electrónico" required>
+
+        <input type="tel" name="Teléfono" placeholder="Teléfono" required>
+
+        <select id="standSeleccionado" name="Stand" required>
+            <option value="">Selecciona un stand</option>
+            <option>Stand Básico</option>
+            <option>Stand Premium</option>
+            <option>Stand VIP</option>
+        </select>
+
+        <textarea name="Mensaje" placeholder="Mensaje o requerimientos"></textarea>
+
+        <!-- CONFIGURACIÓN FORMSUBMIT -->
+        <input type="hidden" name="_subject" value="Nueva reserva de stand">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <!-- COPIA AL CLIENTE -->
+        <input type="hidden" name="_cc" value="">
+
+        <button type="submit">Enviar Reserva</button>
+    </form>
+</section>
+
+<footer>
+    <p>ExpoStands © 2025</p>
+</footer>
+
+<script>
+function reservarStand(stand) {
+    document.getElementById("standSeleccionado").value = stand;
+    document.getElementById("reservar").scrollIntoView({ behavior: "smooth" });
+}
+
+document.getElementById("formReserva").addEventListener("submit", function () {
+    const correoCliente = this.querySelector('[name="Correo"]').value;
+    this.querySelector('[name="_cc"]').value = correoCliente;
+});
+</script>
+
+</body>
+</html>
